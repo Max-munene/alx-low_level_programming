@@ -2,11 +2,11 @@
 #include <time.h>
 #include<stdio.h>
 /**
- * main - using the main find and print last digit of a number
+ * main - using the main find last digit
+ * 
+ * Description: prints last digit of a number and prints it.
  *
- * Description: prints last digit of a number
- *
- * Return:0
+ * Return:0(success)
  */
 int main(void)
 {
