@@ -1,14 +1,11 @@
 #include<stdio.h>
 /**
- * main - print combinations 2 digit
- *
- * Description: print numbers 01 -99
- *
- * Return:0 (success)
+ * main - Program that prints numbers from 0 to 99
+ * Return: 0;
  */
 int main(void)
 {
-	int c;
+	int c = 0;
 
 	while (c <= 99)
 	{
@@ -21,6 +18,6 @@ int main(void)
 		}
 		c++;
 	}
-	putchar('\n');
-	return (0);
+putchar('\n');
+return (0);
 }
