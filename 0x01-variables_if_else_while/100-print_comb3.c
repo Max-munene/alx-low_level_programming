@@ -5,19 +5,25 @@
  */
 int main(void)
 {
-	int c = 0;
+	int i;
+	int j;
 
-	while (c <= 99)
+	for (i = 48; i <= 57; i++)
 	{
-		putchar(c / 10 + '0');
-		putchar(c % 10 + '0');
-		if (c != 99)
+		for (j = 48; j <= 57; j++)
 		{
-			putchar(',');
-			putchar(' ');
+			if (i < j)
+			{
+				putchar(i);
+				putchar(j);
+			}
+			if (i >= 48 && i < 56 && j <= 57)
+			{
+				putchar(',');
+				putchar(' ');
+			}
 		}
-		c++;
 	}
-putchar('\n');
-return (0);
+	putchar('\n');
+	return (0);
 }
