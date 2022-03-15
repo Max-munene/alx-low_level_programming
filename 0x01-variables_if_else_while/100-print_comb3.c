@@ -16,11 +16,12 @@ int main(void)
 			{
 				putchar(i);
 				putchar(j);
-			}
-			if ((i >= 48 && i < 56) && j <= 57)
-			{
+
+				if ((i >= 48 && i < 56) && j <= 57)
+				{
 				putchar(',');
 				putchar(' ');
+				}
 			}
 		}
 	}
