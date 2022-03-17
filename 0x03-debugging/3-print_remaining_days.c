@@ -12,9 +12,15 @@
 
 void print_remaining_days(int month, int day, int year)
 {
-    if ((year % 4 == 0 || year % 400 == 0) && !(year % 100 == 0))
+	int months_cum_days[] = {31, 59, 90, 120, 151, 181, 212, 243, 273, 0, 0, 0};
+
+	months_cum_days[9] = 304;
+	months_cum_days[10] = 334;
+	months_cum_days[11] = 365;
+
+    if ((year % 4 == 0 && year > 1582) && (year % 400 == 0 || year % 100 != 0))
     {
-        if (month > 2 && day >= 60)
+        if (month > 2)
         {
             day++;
         }
@@ -24,9 +30,11 @@ void print_remaining_days(int month, int day, int year)
     }
     else
     {
-        if (month == 2 && day == 60)
+        if (month >= 2 && day > months_cum_days[month - 1])
         {
-            printf("Invalid date: %02d/%02d/%04d\n", month, day - 31, year);
+  	int day_of_month = day - months_cum_days[month - 2];
+
+            printf("Invalid date: %02d/%02d/%04d\n", month, day_of_month, year);
         }
         else
         {
