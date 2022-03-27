@@ -8,28 +8,23 @@
  */
 char *cap_string(char *str)
 {
-	int idx, i;
-	char previous_char = '\t';
-	char word_separators[] = {' ', '\t', '\r', '\n', ',', ';', '.', '!', '?',
-		'"', '(', ')', '{', '}'};
-	char word_separators_length = 14;
-	char should_capitalize = idx = 0;
+	int j, i = 1;
+	char sep[] = {' ', '\t', '\r', '\n', ',', ';', '.', '!', '?', '"', '(', ')', '{', '}'};
 
-	while (*(str + idx) != '\0')
+	if (str[0] >= 'a' && str[0] <= 'z')
 	{
-		for (i = 0; i < word_separators_length; i++)
+		str[0] -= 32;
+	}
+	while (str[i] != '\0')
+	{
+		for (j = 0; sep[j] != '\0'; j++)
 		{
-			if (word_separators[i] == previous_char)
+			if (str[i - 1] == sep[j] && (str[i] >= 'a' && str[i] <= 'z'))
 			{
-				should_capitalize = 1;
-				break;
+				str[i] -= 32;
 			}
-			should_capitalize = 0;
 		}
-		if ((*(str + idx) >= 'a' && *(str + idx) <= 'z') && should_capitalize)
-			*(str + idx) = *(str + idx) - 6 - 26;
-		previous_char = *(str + idx);
-		idx++;
+		i++;
 	}
 	return (str);
 }
