@@ -1,5 +1,5 @@
 #include "main.h"
-
+#include <stdio.h>
 /**
  * rot13 - Encodes a string using rot13
  * @str: The source string
@@ -8,22 +8,18 @@
  */
 char *rot13(char *str)
 {
-	int idx = 0;
+	int i = 0;
 
-	while (*(str + idx) != '\0')
+	for (i = 0; str[i] != '\0' ; i++)
 	{
-		int is_low_1 = *(str + idx) >= 'a' && *(str + idx) <= 'm';
-		int is_low_2 = *(str + idx) >= 'A' && *(str + idx) <= 'M';
-		int is_upper = *(str + idx) >= 'A' && *(str + idx) <= 'M';
-		int is_lower = *(str + idx) >= 'a' && *(str + idx) <= 'm';
-
-		if (is_lower || is_upper)
+		if (*(str + i) >= 'a' && *(str + i) < 'n')
 		{
-			*(str + idx) = ((is_low_1 + is_low_2) * (*(str + idx) + 13))
-				+ ((1 - is_low_1 - is_low_2) * (*(str + idx) - 13));
+			*(str + i) += 13;
 		}
-		idx++;
+		else if (*(str + i) >= 'n' && *(str + i) <= 'z')
+		{
+			*(str + i) -= 13;
+		}
 	}
-
 	return (str);
 }
