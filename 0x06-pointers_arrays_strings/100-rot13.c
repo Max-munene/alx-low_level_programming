@@ -19,7 +19,7 @@ char *rot13(char *str)
 
 		if (is_lower || is_upper)
 		{
-			*(str + idx) = ((is_low_1 + is_low_2) * (*(str + idx) + 13)) 
+			*(str + idx) = ((is_low_1 + is_low_2) * (*(str + idx) + 13))
 				+ ((1 - is_low_1 - is_low_2) * (*(str + idx) - 13));
 		}
 		idx++;
