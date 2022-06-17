@@ -8,18 +8,21 @@
  */
 char *rot13(char *str)
 {
-	int i = 0;
+	int idx = 0;
 
-	for (i = 0; str[i] != '\0' ; i++)
+	while (*(str + idx) != '\0')
 	{
-		if (*(str + i) >= 'a' && *(str + i) < 'n')
+		int is_low_1 = *(str + idx) >= 'a' && *(str + idx) <= 'm';
+		int is_low_2 = *(str + idx) >= 'A' && *(str + idx) <= 'M';
+		int is_upper = *(str + idx) >= 'A' && *(str + idx) <= 'Z';
+		int is_lower = *(str + idx) >= 'a' && *(str + idx) <= 'z';
+
+		if (is_lower || is_upper)
 		{
-			*(str + i) += 13;
+			*(str + idx) = ((is_low_1 + is_low_2) * (*(str + idx) + 13)) 
+				+ ((1 - is_low_1 - is_low_2) * (*(str + idx) - 13));
 		}
-		else if (*(str + i) >= 'n' && *(str + i) <= 'z')
-		{
-			*(str + i) -= 13;
-		}
+		idx++;
 	}
 	return (str);
 }
